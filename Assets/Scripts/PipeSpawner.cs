@@ -19,6 +19,8 @@ public class PipeSpawner : MonoBehaviour {
     private float _cameraTop;
     private float _cameraBottom;
 
+    private float _spawnOffset = 2f;
+
     private Coroutine _spawnerCoroutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,14 +34,14 @@ public class PipeSpawner : MonoBehaviour {
         _cameraTop = _cameraPosition.y + _cameraCenter;
         _cameraBottom = _cameraPosition.y - _cameraCenter;
 
-        Resume(); // start the coroutine
+        // Resume(); // start the coroutine
     }
 
     void SpawnPipe() {
         var randomY = Random.Range(_cameraBottom + _randomYPadding, _cameraTop - _randomYPadding);
 
         // Quaternion.identity means no rotation
-        Instantiate(_pipePrefab, new Vector3(_cameraRightEdge + 5, randomY, 0f), Quaternion.identity);
+        Instantiate(_pipePrefab, new Vector3(_cameraRightEdge + _spawnOffset, randomY, 0f), Quaternion.identity);
     }
 
     IEnumerator SpawnPipes() {
