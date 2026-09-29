@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,11 @@ public class BirdController : MonoBehaviour {
 
     [SerializeField] private InputActionReference _jumpActionReference;
 
+    [SerializeField] private LevelHandler _levelHandler;
+
     private Rigidbody2D _rigidbody2D;
+
+    public event Action OnPointScored;
 
     // My methods
     void Jump(InputAction.CallbackContext context) {
@@ -29,7 +34,12 @@ public class BirdController : MonoBehaviour {
         _jumpActionReference.action.performed -= Jump;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D(Collision2D collision) {
         print($"Bird collided with: {collision.gameObject.name}");
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        // print($"Bird collided with trigger: {collision.gameObject.name}");
+        OnPointScored.Invoke();
     }
 }
