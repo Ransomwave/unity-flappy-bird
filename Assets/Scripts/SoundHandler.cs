@@ -6,6 +6,7 @@ public class SoundHandler : MonoBehaviour {
 
     [SerializeField] private AudioClip _soundPoint;
     [SerializeField] private AudioClip _soundHit;
+    [SerializeField] private AudioClip _soundWing;
 
     [SerializeField] private LevelHandler _levelHandler;
     [SerializeField] private BirdController _birdController;
@@ -21,12 +22,16 @@ public class SoundHandler : MonoBehaviour {
         _soundEffectsSource.PlayOneShot(_soundPoint);
     }
 
+    private void OnJumpHandler() {
+        _soundEffectsSource.PlayOneShot(_soundWing);
+    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake() {
         _soundEffectsSource = GetComponent<AudioSource>();
 
         _birdController.OnPointScored += OnPointScoredHandler;
         _birdController.OnPipeTouched += OnPipeTouchedHandler;
+        _birdController.OnJump += OnJumpHandler;
     }
 }

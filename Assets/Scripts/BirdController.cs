@@ -16,11 +16,13 @@ public class BirdController : MonoBehaviour {
 
     public event Action OnPointScored;
     public event Action OnPipeTouched;
+    public event Action OnJump;
 
     // My methods
     void Jump(InputAction.CallbackContext context) {
         if (!_isActive) return;
 
+        OnJump.Invoke();
         _rigidbody2D.linearVelocity = Vector2.zero; // Reset the velocity before applying the jump force
         _rigidbody2D.AddForceY(_jumpForce, ForceMode2D.Impulse);
     }

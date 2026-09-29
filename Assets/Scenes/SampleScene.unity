@@ -898,7 +898,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1011,6 +1011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _soundPoint: {fileID: 8300000, guid: 682b5fceb13a5c04c97e5bb6b538964c, type: 3}
   _soundHit: {fileID: 8300000, guid: e982c2046fb0b294f898a3142d27e56b, type: 3}
+  _soundWing: {fileID: 8300000, guid: c9720f5199eed3646bf329dcdc282ffd, type: 3}
   _levelHandler: {fileID: 1871842072}
   _birdController: {fileID: 168247698}
 --- !u!1 &1157217882
