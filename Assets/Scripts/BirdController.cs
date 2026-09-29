@@ -13,6 +13,7 @@ public class BirdController : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;
 
     public event Action OnPointScored;
+    public event Action OnPipeTouched;
 
     // My methods
     void Jump(InputAction.CallbackContext context) {
@@ -39,7 +40,10 @@ public class BirdController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        // print($"Bird collided with trigger: {collision.gameObject.name}");
-        OnPointScored.Invoke();
+        if (collision.gameObject.name == "AddPointTrigger") {
+            OnPointScored.Invoke();
+        } else if (collision.gameObject.name.Contains("Pipe")) {
+            OnPipeTouched.Invoke();
+        }
     }
 }

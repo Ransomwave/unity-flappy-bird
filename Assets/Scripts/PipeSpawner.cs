@@ -19,6 +19,8 @@ public class PipeSpawner : MonoBehaviour {
     private float _cameraTop;
     private float _cameraBottom;
 
+    private Coroutine _spawnerCoroutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         _cameraOrthographicSize = Camera.main.orthographicSize;
@@ -30,7 +32,7 @@ public class PipeSpawner : MonoBehaviour {
         _cameraTop = _cameraPosition.y + _cameraCenter;
         _cameraBottom = _cameraPosition.y - _cameraCenter;
 
-        StartCoroutine(SpawnPipes());
+        Resume(); // start the coroutine
     }
 
     void SpawnPipe() {
@@ -45,5 +47,22 @@ public class PipeSpawner : MonoBehaviour {
             yield return new WaitForSeconds(_spawnInterval);
             SpawnPipe();
         }
+    }
+
+    public void Resume() {
+        if (_spawnerCoroutine != null) {
+            print("Coroutine already running!");
+            return;
+        }
+        _spawnerCoroutine = StartCoroutine(SpawnPipes());
+    }
+
+    public void Stop() {
+        if (_spawnerCoroutine == null) {
+            print("Coroutine already stopped!");
+            return;
+        }
+        StopCoroutine(_spawnerCoroutine);
+        _spawnerCoroutine = null;
     }
 }
