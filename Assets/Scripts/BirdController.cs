@@ -63,7 +63,7 @@ public class BirdController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (!_isActive) return;
-        if (collision.gameObject.name.ToLower().Contains("pipe")) {
+        if (collision.gameObject.tag == "kill") {
             _isActive = false;
             OnPipeTouched.Invoke();
             _collider2D.enabled = false;
