@@ -38,10 +38,6 @@ public class PipeSpawner : MonoBehaviour {
 
         // Quaternion.identity means no rotation
         Instantiate(_pipePrefab, new Vector3(_cameraRightEdge + 5, randomY, 0f), Quaternion.identity);
-
-        // print("Spawning pipe at: " + randomY);
-
-        // var pipeCloneRigidbody = pipeClone.GetComponent<Rigidbody2D>();
     }
 
     IEnumerator SpawnPipes() {
