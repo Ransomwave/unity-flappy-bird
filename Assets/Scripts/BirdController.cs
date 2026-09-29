@@ -33,6 +33,7 @@ public class BirdController : MonoBehaviour {
     public void ResetBird() {
         _collider2D.enabled = true;
         _rigidbody2D.linearVelocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0f;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
         _rigidbody2D.simulated = false; // Stay still until the player presses the jump button
